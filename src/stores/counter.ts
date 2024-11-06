@@ -1,10 +1,14 @@
 import { ref } from 'vue';
 import { defineStore } from 'pinia';
-interface Props{
-  id: number; 
-  title: string; 
-  url: string
+
+interface Props {
+  id: number;
+  title: string;
+  url: string;
+  description: string;
+  price: number;
 }
+
 export const useCounterStore = defineStore('counter', () => {
   const cart = ref<Props[]>([]);
 
@@ -12,6 +16,5 @@ export const useCounterStore = defineStore('counter', () => {
     cart.value.push(post);
   }
 
-
-  return {cart, Cart };
+  return { cart, Cart };
 });
