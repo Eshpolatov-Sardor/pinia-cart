@@ -2,85 +2,40 @@
 import { ref } from 'vue';
 import { useCounterStore } from '@/stores/counter';
 
-interface Post {
-  id: number;
-  title: string;
-  url: string;
-  description: string;
-  price: number;
-}
-
 const store = useCounterStore();
-const posts = ref<Post[]>([
-  {
-    id: 1,
-    title: 'Magazin 1',
-    url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmSHiu9PwPaAh_lZbNiQaaqaJ4jzy9LsW5ng&s',
-    description: 'High-quality product 1.',
-    price: 100
-  },
-  {
-    id: 2,
-    title: 'Magazin 2',
-    url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIfbDp22IASwnbQr_ehSFEKLQVETHTsy4tvg&s',
-    description: 'High-quality product 2.',
-    price: 150
-  },
-  {
-    id: 3,
-    title: 'Magazin 3',
-    url: 'https://frankfurt.apollo.olxcdn.com/v1/files/7njw7t3ot2r02-UZ/image;s=1280x996',
-    description: 'High-quality product 3.',
-    price: 200
-  },
-  {
-    id: 4,
-    title: 'Magazin 4',
-    url: 'https://frankfurt.apollo.olxcdn.com/v1/files/xofinem8ns3p3-UZ/image;s=960x960',
-    description: 'High-quality product 4.',
-    price: 250
-  }
-]);
-
-const selectedPost = ref<Post | null>(null);
-const isModalOpen = ref(false);
-
-function submit(post: Post) {
-  store.Cart(post);
-}
-
-function openModal(post: Post) {
-  selectedPost.value = post;
-  isModalOpen.value = true;
-}
-
-function closeModal() {
-  isModalOpen.value = false;
-}
+const url = ref('');
 </script>
 
 <template>
   <div class="template">
+    <div style="display: flex; justify-content: center;">
+      <div>
+        <input v-model="url" type="text" placeholder="rasm link" style="padding: 5px; border: 1px solid green; width: 450px;">
+        <button @click="store.imgSubmit(url)" type="submit" style="padding: 5px; background-color: green; color: wheat; cursor: pointer;">Add Toto</button>
+      </div>
+    </div>
+    
     <ul style="display: flex; flex-wrap: wrap; gap: 16px; width: 100%; justify-content: center; padding: 25px;">
-      <li v-for="post in posts" :key="post.id" style="list-style-type: none;  border: 1px solid black; text-align: center; border-radius: 20px;">
-        <img @click="openModal(post)" :src="post.url" :alt="post.title" width="325" height="300" style="border-radius: 20px; cursor: pointer;" />
+      <li v-for="post in store.posts" :key="post.id" style="list-style-type: none; border: 1px solid black; text-align: center; border-radius: 20px;">
+        <img @click="store.openModal(post)" :src="post.url" :alt="post.title" width="325" height="300" style="border-radius: 20px; cursor: pointer;" />
         <div style="display: flex; align-items: center; justify-content: space-evenly;">
           <p style="padding: 10px;">{{ post.description }}</p>
-          <button type="button" @click="submit(post)" style="border: none; cursor: pointer;">
+          <button type="button" @click="store.Cart(post)" style="border: none; cursor: pointer;">
             <img style="width: 50px;" src="https://thumbs.dreamstime.com/b/shop-cart-icon-buy-symbol-shopping-basket-sign-%C3%A2%E2%82%AC-vector-142876366.jpg" alt="karzinka">
           </button>
         </div>
       </li>
     </ul>
 
-    <div v-if="isModalOpen" class="modal-overlay" @click="closeModal">
+    <div v-if="store.isModalOpen" class="modal-overlay" @click="store.closeModal">
       <div class="modal-content" @click.stop>
         <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px;">
-          <h3>{{ selectedPost?.title }}</h3>
-          <button @click="closeModal" style="margin-top: 10px; padding: 10px; cursor: pointer; background-color: gray; color: white; border: none; border-radius: 10px;">X</button>
-        </div> <img :src="selectedPost?.url" :alt="selectedPost?.title" width="325" height="300" style="border-radius: 20px;" />
-        <p>{{ selectedPost?.description }}</p>
-        <p><strong>Price:</strong> ${{ selectedPost?.price }}</p>
+          <h3>{{ store.selectedPost?.title }}</h3>
+          <button @click="store.closeModal" style="margin-top: 10px; padding: 10px; cursor: pointer; background-color: gray; color: white; border: none; border-radius: 10px;">X</button>
+        </div>
+        <img :src="store.selectedPost?.url" :alt="store.selectedPost?.title" width="325" height="300" style="border-radius: 20px;" />
+        <p>{{ store.selectedPost?.description }}</p>
+        <p><strong>Price:</strong> ${{ store.selectedPost?.price }}</p>
       </div>
     </div>
   </div>

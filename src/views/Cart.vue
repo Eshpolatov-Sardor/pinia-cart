@@ -2,19 +2,7 @@
 import { ref } from 'vue';
 import { useCounterStore } from '@/stores/counter';
 
-interface Post {
-  id: number;
-  title: string;
-  url: string;
-  description: string;
-  price: number;
-}
-
 const store = useCounterStore()
-
-function deleteItem(index: number) {
-  store.cart.splice(index, 1);
-}
 </script>
 
 <template>
@@ -24,7 +12,7 @@ function deleteItem(index: number) {
           <img :src="item.url" :alt="item.title" width="100%" height="300" style="border-radius: 20px;" />
           <span style="text-align: center; display: flex; justify-content: space-evenly; padding: 10px; align-items: center;">
             {{ item.description }}
-            <button @click="deleteItem(index)" style="padding: 10px; cursor: pointer; background-color: red; color: aliceblue; border: none; border-radius: 10px;">delete</button>
+            <button @click="store.deleteItem(index)" style="padding: 10px; cursor: pointer; background-color: red; color: aliceblue; border: none; border-radius: 10px;">delete</button>
           </span>
         </li>
       </ul>
