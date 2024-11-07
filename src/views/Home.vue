@@ -20,9 +20,7 @@ const url = ref('');
         <img @click="store.openModal(post)" :src="post.url" :alt="post.title" width="325" height="300" style="border-radius: 20px; cursor: pointer;" />
         <div style="display: flex; align-items: center; justify-content: space-evenly;">
           <p style="padding: 10px;">{{ post.description }}</p>
-          <button type="button" @click="store.Cart(post)" style="border: none; cursor: pointer;">
-            <img style="width: 50px;" src="https://thumbs.dreamstime.com/b/shop-cart-icon-buy-symbol-shopping-basket-sign-%C3%A2%E2%82%AC-vector-142876366.jpg" alt="karzinka">
-          </button>
+      
         </div>
       </li>
     </ul>
