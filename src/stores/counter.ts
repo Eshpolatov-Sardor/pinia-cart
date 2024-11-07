@@ -1,4 +1,4 @@
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { defineStore } from 'pinia';
 
 interface Post {
@@ -11,39 +11,27 @@ interface Post {
 
 export const useCounterStore = defineStore('counter', () => {
   const cart = ref<Post[]>([]);
-  const posts = ref<Post[]>([
-    {
-      id: 1,
-      title: 'Magazin 1',
-      url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmSHiu9PwPaAh_lZbNiQaaqaJ4jzy9LsW5ng&s',
-      description: '1 High-quality product.',
-      price: 100
-    },
-    {
-      id: 2,
-      title: 'Magazin 2',
-      url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIfbDp22IASwnbQr_ehSFEKLQVETHTsy4tvg&s',
-      description: '2 High-quality product.',
-      price: 150
-    },
-    {
-      id: 3,
-      title: 'Magazin 3',
-      url: 'https://frankfurt.apollo.olxcdn.com/v1/files/7njw7t3ot2r02-UZ/image;s=1280x996',
-      description: '3 High-quality product.',
-      price: 200
-    },
-    {
-      id: 4,
-      title: 'Magazin 4',
-      url: 'https://frankfurt.apollo.olxcdn.com/v1/files/xofinem8ns3p3-UZ/image;s=960x960',
-      description: '4 High-quality product.',
-      price: 250
-    }
-  ]);
-  
+  const posts = ref<Post[]>([]);
   const selectedPost = ref<Post | null>(null);
   const isModalOpen = ref(false);
+
+  async function fetchPosts() {
+    try {
+      const response = await fetch('http://localhost:3000/tasks');
+      if (response.ok) {
+        const data = await response.json();
+        posts.value = data;
+      } else {
+        console.error('Failed to fetch posts');
+      }
+    } catch (error) {
+      console.error('Error fetching posts:', error);
+    }
+  }
+
+  onMounted(() => {
+    fetchPosts();
+  });
 
   function Cart(post: Post) {
     cart.value.push(post);
@@ -60,7 +48,6 @@ export const useCounterStore = defineStore('counter', () => {
       };
       posts.value.push(newPost);
     }
-    
   }
 
   function openModal(post: Post) {
@@ -70,10 +57,15 @@ export const useCounterStore = defineStore('counter', () => {
 
   function closeModal() {
     isModalOpen.value = false;
+    selectedPost.value = null;
   }
 
   function deleteItem(index: number) {
     cart.value.splice(index, 1);
+  }
+  
+  function allcelar() {
+    cart.value = ""
   }
 
   return {
@@ -85,6 +77,7 @@ export const useCounterStore = defineStore('counter', () => {
     imgSubmit,
     openModal,
     closeModal,
-    deleteItem
+    deleteItem,
+    allcelar
   };
 });

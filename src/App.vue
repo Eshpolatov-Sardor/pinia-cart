@@ -11,8 +11,8 @@ const store = useCounterStore()
 <template>
       <header style="display: flex; justify-content: center;">
         <nav style="display: flex; text-align: center;  justify-content: space-between; padding: 24px 0 0 0; width: 250px; align-items: center;">
-          <RouterLink to="/about" style="text-decoration: none; color: blue; font-size: 25px;">Home</RouterLink>
-          <RouterLink to="/" style="display: flex; text-decoration: none; color: blue; font-size: 25px;"><img style="width: 50px;" src="https://thumbs.dreamstime.com/b/shop-cart-icon-buy-symbol-shopping-basket-sign-%C3%A2%E2%82%AC-vector-142876366.jpg" alt=""> {{ cartItemCount   }}</RouterLink>
+          <RouterLink to="/" style="display: flex; text-decoration: none; color: blue; font-size: 25px;">Home</RouterLink>
+          <RouterLink to="/about" style="display: flex; text-decoration: none; color: blue; font-size: 25px;"><img style="width: 50px;" src="https://thumbs.dreamstime.com/b/shop-cart-icon-buy-symbol-shopping-basket-sign-%C3%A2%E2%82%AC-vector-142876366.jpg" alt=""> {{ cartItemCount   }}</RouterLink>
         </nav>
       </header>
 

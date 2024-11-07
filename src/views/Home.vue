@@ -8,9 +8,9 @@ const url = ref('');
 
 <template>
   <div class="template">
-    <div style="display: flex; justify-content: center;">
-      <div>
-        <input v-model="url" type="text" placeholder="rasm link" style="padding: 5px; border: 1px solid green; width: 450px;">
+    <div style="display: flex; justify-content: center; align-items: center;">
+      <div style="width: 75%; margin-left: 5%;">
+        <input v-model="url" type="text" placeholder="rasm link" style="padding: 5px; border: 1px solid green; width: 77%;">
         <button @click="store.imgSubmit(url)" type="submit" style="padding: 5px; background-color: green; color: wheat; cursor: pointer;">Add Toto</button>
       </div>
     </div>

@@ -1,0 +1,32 @@
+{
+    "tasks":[
+     {
+         "id": 1,
+         "title": "Magazin 1",
+         "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmSHiu9PwPaAh_lZbNiQaaqaJ4jzy9LsW5ng&s",
+         "description": "1 High-quality product.",
+         "price": 100
+       },
+       {
+         "id": 2,
+         "title": "Magazin 2",
+         "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIfbDp22IASwnbQr_ehSFEKLQVETHTsy4tvg&s",
+         "description": "2 High-quality product.",
+         "price": 150
+       },
+       {
+         "id": 3,
+         "title": "Magazin 3",
+         "url": "https://frankfurt.apollo.olxcdn.com/v1/files/7njw7t3ot2r02-UZ/image;s=1280x996",
+         "description": "3 High-quality product.",
+         "price": 200
+       },
+       {
+         "id": 4,
+         "title": "Magazin 4",
+         "url": "https://frankfurt.apollo.olxcdn.com/v1/files/xofinem8ns3p3-UZ/image;s=960x960",
+         "description": "4 High-quality product.",
+         "price": 250
+       }
+    ]
+ }
