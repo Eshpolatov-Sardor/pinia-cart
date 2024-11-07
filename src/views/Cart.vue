@@ -4,11 +4,11 @@ import { useCounterStore } from '@/stores/counter';
 
 const store = useCounterStore();
 const gifshow = ref(true);
-const allcelar = ref(false);
+const allcelear = ref(false);
 
 if (store.cart.length > 0) {
   gifshow.value = false;
-  allcelar.value = true
+  allcelear.value = true
 }
 </script>
 
@@ -26,7 +26,7 @@ if (store.cart.length > 0) {
     <div v-if="gifshow" style="display: flex; justify-content: center;">
       <img style="width: 45%; height: 100%;" src="https://media1.tenor.com/m/NnKy7U4R0R8AAAAd/dragon-no-prob.gif" alt="">
     </div>
-    <button v-if="allcelar" @click="store.allcelar" style="border-radius: 20px; border: none; margin-left: 250px;">
+    <button v-if="allcelear" @click="store.allcelear" style="border-radius: 20px; border: none; margin-left: 250px; cursor: pointer;">
       <h2 style="padding: 10px; color: aqua; background-color: red; border-radius: 20px;">all celar</h2>
     </button>
   </main>

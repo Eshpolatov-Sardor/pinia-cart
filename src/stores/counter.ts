@@ -1,5 +1,6 @@
 import { ref, onMounted } from 'vue';
 import { defineStore } from 'pinia';
+import Swal from 'sweetalert2'
 
 interface Post {
   id: number;
@@ -35,16 +36,25 @@ export const useCounterStore = defineStore('counter', () => {
 
   function Cart(post: Post) {
     cart.value.push(post);
+    Swal.fire({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 1000,
+      icon: 'success',
+      title: 'Tastiqlandi',
+      text: 'sotib olmoqchi bulgan mahsulotingiz savatga tushdi',
+    });
   }
 
   function imgSubmit(url: string) {
     if (url) {
       const newPost: Post = {
         id: posts.value.length + 1,
-        title: ` ${posts.value.length + 1} Magazin`,
+        title: `${posts.value.length + 1} Magazin`,
         url,
         description: `${posts.value.length + 1} High-quality product.`,
-        price: 100 + posts.value.length * 50
+        price: 100 + posts.value.length * 50,
       };
       posts.value.push(newPost);
     }
@@ -62,10 +72,19 @@ export const useCounterStore = defineStore('counter', () => {
 
   function deleteItem(index: number) {
     cart.value.splice(index, 1);
+    Swal.fire({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 1000,
+      icon: 'success',
+      title: 'O\'chdi',
+      text: 'Mahsulotingiz savatdan olib tashlandi',
+    });
   }
-  
-  function allcelar() {
-    cart.value = ""
+
+  function allcelear() {
+    cart.value = [];
   }
 
   return {
@@ -78,6 +97,6 @@ export const useCounterStore = defineStore('counter', () => {
     openModal,
     closeModal,
     deleteItem,
-    allcelar
+    allcelear,
   };
 });

@@ -24,9 +24,37 @@
        {
          "id": 4,
          "title": "Magazin 4",
-         "url": "https://frankfurt.apollo.olxcdn.com/v1/files/xofinem8ns3p3-UZ/image;s=960x960",
+         "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7ntzumR7F20Ir2UV0Q4PBL-2Kl8cUl-11TQ&s",
          "description": "4 High-quality product.",
          "price": 250
+       },
+       {
+         "id": 5,
+         "title": "Magazin 5",
+         "url": "https://frankfurt.apollo.olxcdn.com/v1/files/xofinem8ns3p3-UZ/image;s=960x960",
+         "description": "5 High-quality product.",
+         "price": 300
+       },
+       {
+         "id": 6,
+         "title": "Magazin 6",
+         "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhnjWu-Zyy9W-xCFdJck377vlMJDPtX4PaLxmmiNsK53mNyyIRSDSSDgUpuXHuEj5i1m0&usqp=CAU",
+         "description": "6 High-quality product.",
+         "price": 350
+       },
+       {
+         "id": 7,
+         "title": "Magazin 7",
+         "url": "https://frankfurt.apollo.olxcdn.com/v1/files/0nzgxbui5o0h1-UZ/image;s=200x0;q=50",
+         "description": "7 High-quality product.",
+         "price": 400
+       },
+       {
+         "id": 8,
+         "title": "Magazin 8",
+         "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3tv1h7lR5aFYgBLPmod9r0oT7ohqTK0G-1w&s",
+         "description": "8 High-quality product.",
+         "price": 450
        }
     ]
  }
